@@ -19,14 +19,17 @@ const begin_btn = document.getElementById("begin")
 const click_area = document.getElementById("clickarea")
 const reset_btn = document.getElementById("reset")
 
-var show = function(element) {
+var show = function(element) 
+{
     element.style.display = "inline"
 }
-var hide = function(element) {
+var hide = function(element) 
+{
     element.style.display = "none"
 }
 
-function start_game() {
+function start_game() 
+{
     hide(begin_btn)
     hide(reset_btn)
     score = 0
@@ -35,17 +38,24 @@ function start_game() {
     start_time = new Date().getTime();
     console.log(start_time);
 
-    var timer_id = setInterval(function() {
+    var timer_id = setInterval(function() 
+    {
         var total = (new Date().getTime() - start_time) / 1000
         
-        if (total < duration) {
+        if (total < duration) 
+        {
             timer_txt.textContent = total.toFixed(3)
-            if ((score / total).toFixed(2) < 0) {
+            if ((score / total).toFixed(2) < 0) 
+            {
                 clicks_txt.textContent = "0"
-            } else {
+            } 
+            else 
+            {
                 clicks_txt.textContent = (score / total).toFixed(2)
             }
-        } else {
+        } 
+        else 
+        {
             ended = true
             clearInterval(timer_id)
             timer_txt.textContent = duration + ".000"
@@ -54,11 +64,13 @@ function start_game() {
     })
 }
 
-function end_game() {
+function end_game() 
+{
     var clicks_by_seconds = (score / duration).toFixed(2);
     show(begin_btn)
     show(reset_btn)
-    setTimeout(function() {
+    setTimeout(function() 
+    {
         alert("You made " + score + " clicks in " + duration +
         " seconds. It is a " + clicks_by_seconds + " clicks by second. Try again!")
     
@@ -71,7 +83,8 @@ begin_btn.addEventListener("click", function(e) {
 })
 
 click_area.addEventListener("click", function(e) {
-    if (!ended) {
+    if (!ended) 
+    {
         score++;
         score_txt.textContent = score
         console.log("clicked");
@@ -79,7 +92,8 @@ click_area.addEventListener("click", function(e) {
 })
 
 reset_btn.addEventListener("click", function(e) {
-    if (ended = true) {
+    if (ended = true) 
+    {
         timer_txt.textContent = defalut_zero
         score_txt.textContent = defalut_zero
         clicks_txt.textContent = defalut_zero
